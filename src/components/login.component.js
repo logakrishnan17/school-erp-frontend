@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import AuthService from '../services/AuthService'
 
 export default class Login extends Component {
@@ -42,11 +41,9 @@ export default class Login extends Component {
       password: this.state.password
     }
 
-    console.log(loginData,"loginData");
-
     this.Auth.login(loginData)
     .then(response => {
-      console.log(response,"tes");
+      
       if(response && response.status && response.status.code === 200) {
         this.Auth.setToken(response.token);
         this.props.history.replace('/list');
@@ -87,7 +84,7 @@ export default class Login extends Component {
 							        onChange={this.onChangePassword}
                     />
 									</div>
-									<div className="form-group">
+									<div className="form-group text-center">
 										<input type="submit" name="submit" className="btn btn-info btn-md" value="submit" />
 									</div>
 								</form>

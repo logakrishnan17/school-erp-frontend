@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 import AuthService from '../services/AuthService';
 import * as service from '../services/service';
+import Navigation from "./navbar.component";
 
 export default class StudentsList extends Component {
 	constructor(props) {
@@ -43,7 +43,7 @@ export default class StudentsList extends Component {
       <td>
         {
           data.parentDetails ?
-          <button disabled className="btn-primary btn-disabled">Assigned</button> :
+          <button disabled className="btn-success btn-disabled">Assigned</button> :
           <button className="btn-primary" onClick={() => this.updateStudent(data._id)}>Assign</button>
         }
       </td>
@@ -55,6 +55,12 @@ export default class StudentsList extends Component {
 
   updateStudent(data) {
 
+    let editData = this.state.studentsData.find((item) => {
+      return item._id.toString() === data.toString();
+    });
+
+    this.props.history.replace('/edit/'+ data, { editData: editData });
+    // <CreateStudent />
   };
 
   deleteStudent(data) {
@@ -106,8 +112,9 @@ export default class StudentsList extends Component {
 	render() {
 
 		return (
-			<div>
-				<h3>Students List</h3>
+			<div className="col-md-12">
+        <Navigation history={this.props.history}/>
+				<h3 className="text-center">Students List</h3>
 				<table className="table table-striped" style={{ marginTop: 20 }}>
 					<thead>
 						<tr>
