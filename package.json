@@ -2,7 +2,7 @@
   "name": "school-erp-frontend",
   "version": "0.1.0",
   "engines": {
-    "node": "6.11.1"
+    "node": "12.16.3"
   },
   "private": true,
   "dependencies": {
