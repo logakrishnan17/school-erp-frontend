@@ -1,5 +1,5 @@
 import axios from 'axios';
-let url = 'http://localhost:3000';
+let url = 'https://school-erp-backend.herokuapp.com/';
 
 export function login(user) {
 	return axios
